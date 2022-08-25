@@ -1,0 +1,146 @@
+@charset "utf-8";
+// SCSS Document
+
+// clearfix ----------------------------------------
+
+.cf::before,
+.cf::after {
+  content: "";
+  display: block;
+}
+.cf::after {
+  clear: both;
+}
+
+// float ----------------------------------------
+
+.fl_l {
+  float: left;
+}
+.fl_r {
+  float: right;
+}
+
+// txt ----------------------------------------
+
+.txt_c {
+  text-align: center !important;
+}
+.txt_l {
+  text-align: left !important;
+}
+.txt_r {
+  text-align: right !important;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.txt_large {
+  font-size: 115%;
+}
+.txt_small {
+  font-size: 85%;
+}
+
+// img ----------------------------------------
+
+.img_c {
+  margin: 1.0rem auto;
+}
+.img_l, .img_r {
+  max-width: 100%;
+  margin: 1.0rem auto;
+}
+
+@include pc {
+  .img_l {
+    float: left;
+    margin: 0 2.0rem 2.0rem 0;
+  }
+  .img_r {
+    float: right;
+    margin: 0 0 2.0rem 2.0rem;
+  }
+}
+
+
+// PC・SP　表示・非表示 ----------------------------------------
+
+.sp_n {
+  display: none;
+}
+@include pc {
+  .sp_n {
+    display: block;
+  }
+  .pc_n {
+    display: none;
+  }
+}
+
+
+// マージン・パディング回り ----------------------------------------
+
+.mt40 {
+  margin-top: 4.0rem !important;
+}
+.mt30 {
+  margin-top: 3.0rem;
+}
+.mt20 {
+  margin-top: 2.0rem;
+}
+.mt10 {
+  margin-top: 1.0rem;
+}
+
+.main {
+  > section {
+    padding: 3rem 1rem;
+  }
+}
+@include pc {
+  .main {
+    > section {
+      padding: 10rem 0;
+    }
+  }
+}
+
+
+// タイトル回り ----------------------------------------
+
+h3 {
+	text-align: center;
+  margin: 0 0 1rem;
+  font-weight: bold;
+	font-size: 2rem;
+  span {
+    display: inline-block;
+    position: relative;
+		z-index: 1;
+    &::after {
+      content: '';
+      display: block;
+      position: relative;
+      bottom: 0.8em;
+      height: 0.6em;
+      z-index: -1;
+      background-color: $clr_yellow;
+      border-radius: 0.3em;
+    }
+  }
+	@include mb {
+	  line-height: 1.4;
+		span::after {
+			bottom: 0.6em;
+		}
+	}
+	@include pc {
+	  margin: 0 0 3rem;
+		font-size: 3.6rem;
+	}
+}
+

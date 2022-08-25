@@ -1,0 +1,859 @@
+@charset "utf-8";
+// SCSS Document
+
+// インポート ----------------------------------------
+
+@import "reset";
+@import "config";
+@import "module";
+
+// ----------------------------------------
+
+html {
+  font-size: calc(100vw / 32);
+}
+
+body {
+	background: #fff url("../img/bg.jpg") fixed repeat top center;
+	background-size: 400px 400px;
+  @include basefamily;
+  font-size: 1.4rem;
+  color: $clr_txt;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+main {
+}
+
+@include pc {
+  html {
+    font-size: 62.5%;
+  }
+
+  body {
+		background-size: 800px 800px;
+    min-width: calc(#{$wrap} + 40px);
+    font-size: 1.6rem;
+    line-height: 1.8;
+  }
+
+  a, button {
+    transition: .2s;
+    &:hover {
+      opacity: .7;
+    }
+  }
+
+  .wrap {
+    @include wrap;
+    margin: auto;
+  }
+
+  main {
+    a:not([class*="btn"]):hover {
+      opacity: 1.0;
+      text-decoration: none;
+    }
+  }
+}
+
+// ヘッダー ----------------------------------------
+
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+  @include mb {
+		.wrap {
+			padding: 1rem;
+			h1 {
+				img {
+					width: 200px;
+				}
+			}
+			.nav_btn {
+				position: fixed;
+				top: 1rem;
+				right: 1rem;
+				width: 28px;
+				height: 24px;
+				z-index: 10;
+				.btn-line {
+					display: block;
+					position: relative;
+					width: 100%;
+					height: 2px;
+					background-color: $clr_orange;
+					transition: .2s;
+					&::before, &::after {
+						content: "";
+						position: absolute;
+						width: 100%;
+						height: 100%;
+						background-color: $clr_orange;
+						transition: .5s;
+					}
+          &::before {
+            transform: translateY(-8px);
+          }
+          &::after {
+            transform: translateY(8px);
+          }
+					
+					&.open {
+						background-color: transparent;
+						&::before, &::after {
+							content: "";
+							transition: .2s;						}
+						&::before {
+							transform: rotate(45deg);
+						}
+						&::after {
+							transform: rotate(-45deg);
+						}
+					}
+				}
+			}
+			nav {
+				position: fixed;
+				top: 0;
+				right: -80%;
+				width: 70%;
+				height: 100vh;
+				margin-left: auto;
+				display: flex;
+				flex-direction: column;
+				background: #fff;
+				box-shadow: -10px 0 10px -10px rgba(0, 0, 0, 0.15);
+				transition: .5s;
+				&.open {
+					right: 0;
+				}
+				ul {
+					li {
+						a {
+							display: block;
+							border-bottom: 1px solid $clr_gray;
+              padding: 1rem;
+						}
+					}
+					&.menu {
+					}
+					&.sub {
+						li {
+							a {
+								font-weight: bold;
+								&.trial {
+									background: $clr_orange;
+									color: #fff;
+								}
+								&.login {
+									background: #fff;
+									color: $clr_orange;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}//mb
+	@include pc {
+		.wrap {
+			display: flex;
+      justify-content: space-between;
+			align-items: center;
+			height: 60px;
+			h1 {
+        padding-bottom: 0.5rem;
+				img {
+					width: 238px;
+					height: 30px;
+				}
+			}
+			nav {
+				width: 1020px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				ul {
+					height: 60px;
+					display: flex;
+					align-items: center;
+					align-item: center;
+					&.menu {
+						li {
+							margin: 0 15px 0 0;
+						}
+					}
+					&.sub {
+						li {
+							margin: 0 0 0 10px;
+							a {
+								border: 2px solid $clr_orange;
+								border-radius: 2em;
+								padding: 8px 20px;
+								font-weight: bold;
+								&.trial {
+									background: $clr_orange;
+									color: #fff;
+								}
+								&.login {
+									background: #fff;
+									color: $clr_orange;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}//pc
+}//header
+
+
+// 共通パーツ ----------------------------------------
+
+.jump_btn {
+}
+
+.material-symbols-rounded {
+  font-variation-settings:
+  'FILL' 1
+}
+
+
+// キービジュアル ----------------------------------------
+
+#keyvisual {
+	.wrap {
+		.balloon {
+			p {
+				position: relative;
+				background: $clr_yellow;
+				font-weight: bold;
+				margin: 0;
+				&::after{
+					content: "";
+					position: absolute;
+					width: 0;
+					height: 0;
+					border-style: solid;
+					border-color: transparent transparent transparent $clr_yellow;
+					border-width: 1rem 0 1rem 2rem;
+				}
+				span {
+					&.lag {
+            display: block;
+					}
+					&.sml {
+					}
+				}
+			}
+		}
+		.tit {
+			.lead {
+				margin: 0;
+				font-weight: bold;
+				span {
+					display: inline-block;
+					position: relative;
+					&::after {
+						content: '';
+						display: block;
+						position: relative;
+						bottom: 0.6em;
+						height: 0.5em;
+						z-index: -1;
+						background-color: $clr_yellow;
+						border-radius: 0.25em;
+					}
+				}
+			}
+			.movie {
+				margin: 1.3em 0 0;
+				a {
+					padding: 0.5em 1em;
+					font-weight: bold;
+					background-color: $clr_orange;
+					border-radius: 2em;
+					color: #fff;
+					span {
+						line-height: 1;
+						&::before {
+							font-family: 'Material Icons';
+							font-weight: normal;
+							content: '\e038';
+							padding-right: 0.2em;
+							position: relative;
+							top: 0.15em;
+							font-size: 1.05em;
+						}
+					}
+				}
+			}
+		}
+	}
+  @include mb {
+    padding: 6rem 1rem 4rem;
+		.wrap {
+			.balloon {
+				p {
+					text-align: center;
+					border-radius: 5em;
+					padding: 0.5em 0;
+					&::after {
+						left: 50%;
+						bottom: -1rem;
+            margin-left: -1rem;
+						transform: rotate(90deg);
+					}
+					br {
+						display: none;
+					}
+					span {
+						line-height: 1.2;
+						&.lag {
+							font-size: 2rem;
+						}
+					}
+				}
+			}
+			.tit {
+				text-align: center;
+				.lead {
+					margin: 1em 0 0;
+					font-size: 2rem;
+				}
+				h2 {
+					line-height: 1.3;
+					font-size: 3.4rem;
+					background: url("../img/keyvisual_pic01.png") no-repeat center bottom / 50% auto;
+          padding-bottom: 12.5rem;
+					small {
+						font-size: 2.2rem;
+					}
+				}
+			}
+      .movie {
+				a {
+					display: block;
+					text-align: center;
+				}
+			}
+		}
+	}//mb
+	@include pc {
+		padding: 10rem 0 9rem;
+		.wrap {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+      line-height: 1.4;
+			.balloon {
+				order: 2;
+				width: 67rem;
+				padding-top: 13rem;
+				background: url("../img/keyvisual_pic01.png") no-repeat right top;
+				p {
+					width: 25.4rem;
+					height: 25.4rem;
+					border-radius: 12.7rem;
+					display: flex;
+					flex-wrap: wrap;
+					align-items: center;
+					&::after {
+						right: -1.8rem;
+						top: 11.7rem;
+					}
+					span {
+						padding-left: 3rem;
+						&.lag {
+							font-size: 3.2rem;
+							align-self: flex-end;
+							padding-bottom: 0.5rem;
+						}
+						&.sml {
+							font-size: 2.2rem;
+							align-self: flex-start;
+						}
+					}
+				}
+			}
+			.tit {
+				order: 1;
+				.lead {
+					font-size: 3.6rem;
+				}
+				h2 {
+					font-size: 6.4rem;
+					small {
+						font-size: 3.6rem;
+					}
+				}
+				.movie {
+					a {
+						display: inline-block;
+						font-size: 2rem;
+					}
+				}
+			}
+		}
+	}//pc
+}
+
+
+
+// お客様は困っています。 ----------------------------------------
+
+#trouble {
+	padding: 3rem 1rem 0;
+	background: $clr_gray;
+	.balloon {
+		dl {
+			background: #fff;
+			border-radius: 1rem;
+			position: relative;
+      &::after{
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-color: transparent #fff transparent transparent;
+        border-width: 1rem 2rem 1rem 0;
+      }
+			dt {
+				font-weight: bold;
+				margin: 0 0 0.3em;
+			}
+		}
+	}
+	.down {
+		background: $clr_lightblue;
+		font-weight: bold;
+		p {
+			margin: 0;
+			&.lead {
+				span {
+					color: $clr_blue;
+				}
+			}
+			&.sub {
+        margin: 1em 0 0;
+				display: inline-block;
+				background: #fff;
+			}
+		}
+	}
+	@include mb {
+		.balloon {
+			padding: 17rem 0 0;
+			background: url("../img/trouble_pic01.png") no-repeat center top / 35% auto;
+			dl {
+				margin: 2rem 0 0;
+				padding: 1.5rem;
+				&::after{
+          left: 50%;
+          top: -1rem;
+          margin-left: -1rem;
+          transform: rotate(90deg);
+				}
+				dt {
+					font-size: 1.6rem;
+				}
+			}
+		}
+		.down {
+			margin: 2rem -1rem 0;
+			padding: 2rem 1rem;
+			p {
+				&.lead {
+					line-height: 1.4;
+					span {
+						font-size: 2rem;
+					}
+				}
+				&.sub {
+					padding: 1rem;
+					border-radius: 1rem;
+				}
+			}
+		}
+	}
+	@include pc {
+		padding: 10rem 0 0;
+		.balloon {
+			padding: 0 0 0 32rem;
+			background: url("../img/trouble_pic01.png") no-repeat left bottom / contain;
+			dl {
+				padding: 3rem 4rem;
+				display: inline-block;
+				&:not(:first-of-type) {
+					margin: 3rem 0 0;
+				}
+				&::after {
+          left: -1.8rem;
+          top: 50%;
+					margin-top: -1rem;
+				}
+				dt {
+					font-size: 2.2rem;
+				}
+			}
+		}
+		.down {
+			margin: 10rem 0 0;
+			padding: 6rem 0;
+			text-align: center;
+			p {
+				&.lead {
+					font-size: 2.2rem;
+					span {
+						font-size: 3.6rem;
+					}
+				}
+				&.sub {
+					padding: 0.4em 1em;
+					border-radius: 2em;
+					font-size: 2rem;
+				}
+			}
+		}
+	}//pc
+}
+
+
+
+// そのお悩み、デジちゃいむLiteが解決します！ ----------------------------------------
+
+#solve {
+	position: relative;
+	&::before {
+		content: "";
+		position: absolute;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-color: $clr_lightblue transparent transparent transparent;
+    left: 50%;
+    top: 0;
+	}
+	h4 {
+		color: $clr_red;
+		font-weight: bold;
+	}
+	#movie {
+		background: #ccc;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-weight: bold;
+	}
+	@include mb {
+		&::before {
+			border-width: 2rem 2rem 0 2rem;
+			margin-left: -2rem;
+		}
+		h4 {
+			font-size: 1.6rem;
+		}
+		#movie {
+			margin: 1rem auto 0;
+			height: 16rem;
+		}
+	}//mb
+	@include pc {
+		text-align: center;
+		&::before {
+			border-width: 4rem 4rem 0 4rem;
+			margin-left: -4rem;
+		}
+		h4 {
+			font-size: 2.2rem;
+		}
+		#movie {
+			margin: 2rem auto 0;
+			width: 70rem;
+			height: 45rem;
+		}
+	}//pc
+}
+
+
+
+// デジちゃいむLiteが選ばれる3つのポイント ----------------------------------------
+
+#point {
+	background: $clr_lightyellow;
+	.detail {
+		dl {
+			background: #fff;
+			border-radius: 1rem;
+			position: relative;
+			z-index: 1;
+			&::after {
+				position: absolute;
+				right: -0.1em;
+    		bottom: -0.2em;
+				z-index: -1;
+				font-weight: bold;
+				font-size: 13em;
+				line-height: 1;
+				letter-spacing: 0.03em;
+				color: $clr_lightyellow;
+			}
+			&:nth-of-type(1)::after {
+        content: '01';
+			}
+			&:nth-of-type(2)::after {
+        content: '02';
+			}
+			&:nth-of-type(3)::after {
+        content: '03';
+			}
+			dt {
+				font-weight: bold;
+				text-align: center;
+				margin: 0 0 0.3em;
+				z-index: 3;
+				span {
+					&::before {
+						display: inline-block;
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-size: 1.2em;
+            position: relative;
+            top: 0.2em;
+						color: $clr_orange;
+					}
+          &.point1::before {
+            content: '\e1b1';
+            padding-right: 0.3em;
+          }
+          &.point2::before {
+            content: '\e0de';
+            padding-right: 0.2em;
+          }
+          &.point3::before {
+            content: '\e2eb';
+						transform: scaleX(-1);
+            padding-left: 0.3em;
+          }
+				}
+			}
+			dd {
+				z-index: 3;
+			}
+		}
+	}
+	.compare {
+    margin: 0 auto;
+		table {
+			width: 100%;
+			border-collapse: separate;
+			overflow: hidden;
+			border-spacing: 0;
+			border-radius: 1rem;
+			th, td {
+				background: #fff;
+				text-align: center;
+				padding: 1em 0.5em;
+			}
+			thead {
+				tr {
+					th {
+						background-color: $clr_yellow;
+						line-height: 1.3;
+						+th {
+							border-left: 2px solid #fff;
+						}
+						&:nth-of-type(2) {
+							background: $clr_red;
+						}
+						img {
+							display: inline-block;
+							fill: #fff;
+							vertical-align: bottom;
+						}
+						svg {
+							color: #fff;
+						}
+					}
+				}
+			}
+			tbody {
+				tr {
+					th,
+					td {
+						border-bottom: 2px solid $clr_lightyellow;
+					}
+					td {
+						border-left: 2px solid $clr_lightyellow;
+						&:first-of-type {
+							color: $clr_red;
+							font-weight: bold;
+						}
+					}			
+					&:last-child {
+						th,
+						td {
+							border-bottom: none;
+						}
+					}
+				}
+			}
+		}
+	}
+	@include mb {
+		.detail {
+      margin: 0 0 3rem;
+			dl {
+				padding: 1rem 1.5rem 1.5rem;
+				&:not(:first-of-type) {
+					margin: 1rem 0 0;
+				}
+				&::after {
+					font-size: 8.5em;
+				}
+				dt {
+					font-size: 1.6rem;
+				}
+			}
+		}
+		.compare {
+			overflow-x: auto;
+			table {
+				min-width: 530px;
+				th, td {
+					padding: 0.5em 0.25em;
+				}
+				thead {
+					tr {
+						th {
+							width: 26%;
+							&:first-of-type {
+								width: 22%;
+							}
+						}
+					}
+				}
+			}
+		}
+	}//mb
+	@include pc {
+		.detail {
+			margin: 0 0 10rem;
+			display: flex;
+			justify-content: space-between;
+			dl {
+				box-sizing: border-box;
+				width: 40rem;
+				padding: 2rem 4rem 3rem;
+				&::after {
+					font-size: 13em;
+				}
+				dt {
+					font-size: 2.2rem;
+				}
+			}
+		}
+		.compare {
+      width: 890px;
+			table {
+				table-layout: fixed;
+			}
+		}
+	}//pc
+}
+
+
+
+// デジちゃいむLiteがあなたのお店をサポートします！ ----------------------------------------
+
+#support {
+	.detail {
+	}
+	.example {
+		.box {
+		}
+	}
+	.step {
+	}
+	@include pc {
+	}//pc
+}
+
+
+
+// よくある質問 ----------------------------------------
+
+#faq {
+	background: $clr_lightyellow;
+	@include pc {
+	}//pc
+}
+
+
+
+// お問い合わせ ----------------------------------------
+
+#contact {
+	@include pc {
+	}//pc
+}
+
+
+// フッター ----------------------------------------
+
+footer {
+	text-align: center;
+	nav {
+		padding: 1.5rem 0;
+		background: $clr_lightyellow;
+	}
+	.copy {
+		margin: 0;
+		padding: 1.5rem 0;
+	}
+	@include pc {
+		nav {
+			padding: 3rem 0;
+			ul {
+				display: flex;
+				justify-content: center;
+				li {
+					padding: 0 1.5rem;
+				}
+			}
+		}
+		.copy {
+			padding: 3rem 0;
+		}
+	}//pc
+}//footer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
