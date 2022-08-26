@@ -71,6 +71,10 @@ header {
 	left: 0;
 	width: 100%;
 	z-index: 10;
+  &.fixed {
+    background: #fff;
+    transition: .5s;
+  }
   @include mb {
 		.wrap {
 			padding: 1rem;
@@ -151,7 +155,7 @@ header {
 						li {
 							a {
 								font-weight: bold;
-								&.trial {
+								&.signup {
 									background: $clr_orange;
 									color: #fff;
 								}
@@ -202,7 +206,7 @@ header {
 								border-radius: 2em;
 								padding: 8px 20px;
 								font-weight: bold;
-								&.trial {
+								&.signup {
 									background: $clr_orange;
 									color: #fff;
 								}
@@ -223,11 +227,54 @@ header {
 // 共通パーツ ----------------------------------------
 
 .jump_btn {
-}
-
-.material-symbols-rounded {
-  font-variation-settings:
-  'FILL' 1
+	text-align: center;
+	margin: 0 auto;
+	li {
+		a {
+			padding: 0.5em 1em;
+			font-weight: bold;
+			background-color: $clr_orange;
+			border-radius: 2em;
+			color: #fff;
+      display: block;
+      text-align: center;
+      border: 2px solid $clr_orange;
+			span {
+				line-height: 1;
+				&::before {
+					font-family: 'Material Icons';
+					font-weight: normal;
+					content: '\e038';
+					padding-right: 0.2em;
+					position: relative;
+					top: 0.15em;
+					font-size: 1.05em;
+				}
+			}
+			&.login {
+				background-color: #fff;
+				color: $clr_orange;
+			}
+		}
+	}
+  @include mb {
+		li {
+			&:not(:first-of-type) {
+				margin: 1rem 0 0;
+			}
+		}
+	}//mb
+	@include pc {
+		width: 40rem;
+		li {
+			&:not(:first-of-type) {
+				margin: 2.5rem 0 0;
+			}
+			a {
+        font-size: 2.4rem;
+			}
+		}
+	}//pc		
 }
 
 
@@ -410,8 +457,6 @@ header {
 	}//pc
 }
 
-
-
 // お客様は困っています。 ----------------------------------------
 
 #trouble {
@@ -531,8 +576,6 @@ header {
 	}//pc
 }
 
-
-
 // そのお悩み、デジちゃいむLiteが解決します！ ----------------------------------------
 
 #solve {
@@ -552,11 +595,6 @@ header {
 		font-weight: bold;
 	}
 	#movie {
-		background: #ccc;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-weight: bold;
 	}
 	@include mb {
 		&::before {
@@ -568,7 +606,16 @@ header {
 		}
 		#movie {
 			margin: 1rem auto 0;
-			height: 16rem;
+			position: relative;
+			width: 100%;
+			padding-top: 56.25%;
+			iframe {
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 100%;
+				height: 100%;
+			}
 		}
 	}//mb
 	@include pc {
@@ -582,13 +629,9 @@ header {
 		}
 		#movie {
 			margin: 2rem auto 0;
-			width: 70rem;
-			height: 45rem;
 		}
 	}//pc
 }
-
-
 
 // デジちゃいむLiteが選ばれる3つのポイント ----------------------------------------
 
@@ -715,7 +758,6 @@ header {
 	}
 	@include mb {
 		.detail {
-      margin: 0 0 3rem;
 			dl {
 				padding: 1rem 1.5rem 1.5rem;
 				&:not(:first-of-type) {
@@ -730,6 +772,7 @@ header {
 			}
 		}
 		.compare {
+			margin: 0 auto 2rem;
 			overflow-x: auto;
 			table {
 				min-width: 530px;
@@ -751,7 +794,6 @@ header {
 	}//mb
 	@include pc {
 		.detail {
-			margin: 0 0 10rem;
 			display: flex;
 			justify-content: space-between;
 			dl {
@@ -767,6 +809,7 @@ header {
 			}
 		}
 		.compare {
+			margin: 0 auto 5rem;
       width: 890px;
 			table {
 				table-layout: fixed;
@@ -775,34 +818,295 @@ header {
 	}//pc
 }
 
-
-
 // デジちゃいむLiteがあなたのお店をサポートします！ ----------------------------------------
 
 #support {
 	.detail {
+		background: url("../img/support_pic01.png") no-repeat;
+		dl {
+			dt {
+				display: inline-block;
+				font-weight: bold;
+				margin: 0 0 0.3em;
+				position: relative;
+				&::after {
+					position: absolute;
+					right: -15px;
+					top: -15px;
+					content: '';
+					width: 25px;
+					height: 24px;
+					background: url("../img/icon_point.png") no-repeat;
+					background-size: contain;
+				}
+			}
+		}
 	}
 	.example {
 		.box {
+			background: $clr_lightyellow;
+			border-radius: 1rem;
+      dl {
+        dt {
+          font-weight: bold;
+          margin: 0 0 0.3em;
+        }
+				dd {
+					&.link {
+						margin: 1em 0 0;
+						a {
+							background: $clr_orange;
+							color: #fff;
+							border: 2px solid $clr_orange;
+							border-radius: 2em;
+							padding: 0.5em 1em;
+							font-weight: bold;
+						}
+					}
+				}
+      }
 		}
 	}
 	.step {
+		dl {
+			background: $clr_lightyellow;
+			border-radius: 1rem;
+			position: relative;
+			&:not(:last-of-type) {
+				&::after {
+					content: '';
+					position: absolute;
+					width: 0;
+					height: 0;
+					border-style: solid;
+				}
+			}
+			dt {
+				margin: 0 0 0.3em;
+				text-align: center;
+				font-weight: bold;
+				span {
+					display: block;
+					color: $clr_orange;
+					margin: 0 0 0.3em;
+					&::after {
+						display: block;
+						font-family: 'Material Icons Outlined';
+            font-weight: normal;
+						color: $clr_orange;
+						line-height: 1;
+					}
+          &.step1::after {
+            content: '\f0c5';
+          }
+          &.step2::after {
+            content: '\eac6';
+          }
+          &.step3::after {
+            content: '\f206';
+          }
+				}
+			}
+		}
 	}
+	@include mb {
+		.detail {
+			padding: 16rem 0 0;
+			background-position: center top;
+			background-size: 60% auto;
+			dl {
+				&:not(:first-of-type) {
+					margin: 2rem 0 0;
+				}
+				dt {
+					font-size: 1.6rem;
+				}
+			}
+		}
+		.example {
+			.box {
+				padding: 2rem 1.5rem;
+				figure {
+					text-align: center;
+					img {
+						display: inline-block;
+					}
+				}
+				dl {
+					dt {
+						margin: 0.3em 0;
+						text-align: center;
+						font-size: 1.6rem;
+					}
+					dd {
+						&.link {
+							text-align: center;
+						}
+					}
+				}
+			}
+		}
+		.step {
+			dl {
+				margin: 0 0 2rem;
+				padding: 2rem 1.5rem;
+				&:not(:last-of-type) {
+					&::after {
+						left: 50%;
+						bottom: -1.5rem;
+						border-color: $clr_lightyellow transparent transparent transparent;
+						border-width: 1.5rem 2rem 0 2rem;
+						margin-left: -2rem;
+					}
+				}
+				dt {
+					font-size: 1.6rem;
+					span {
+						font-size: 1.4rem;
+						&::after {
+							font-size: 6rem;
+						}
+					}
+				}
+      }
+		}
+	}//mb
 	@include pc {
+		.detail {
+			background-position: right 5rem bottom;
+			background-size: contain;
+			dl {
+				&:not(:first-of-type) {
+					margin: 3rem 0 0;
+				}
+				dt {
+					font-size: 2.2rem;
+				}
+			}
+		}
+		.example {
+			.box {
+				padding: 3rem 5rem;
+				display: flex;
+				justify-content: center;
+				dl {
+					margin: -0.5em 0 0 5rem;
+					dt {
+						font-size: 2.2rem;
+					}
+				}
+			}
+		}
+		.step {
+			margin: 0 0 5rem;
+			display: flex;
+			justify-content: space-between;
+      dl {
+				width: 40rem;
+				padding: 3rem 4rem;
+				&:not(:last-of-type) {
+					&::after {
+						right: -2.5rem;
+						top: 50%;
+						border-color: transparent transparent transparent $clr_lightyellow;
+						border-width: 2.5rem 0 2.5rem 2.5rem;
+						margin-top: -2.5rem;
+					}
+				}
+				dt {
+					font-size: 2.2rem;
+					span {
+						font-size: 1.8rem;
+						&::after {
+							font-size: 8rem;
+						}
+					}
+				}
+      }
+		}
 	}//pc
 }
-
-
 
 // よくある質問 ----------------------------------------
 
 #faq {
 	background: $clr_lightyellow;
+	dl {
+		background: #fff;
+		border-radius: 1rem;
+    counter-increment: num 1;
+		position: relative;
+    &::before {
+			position: absolute;
+      color: $clr_orange;
+      content: "Q" counter(num);
+			font-weight: bold;
+    }
+		&::after {
+			position: absolute;
+      font-family: 'Material Icons';
+      font-weight: normal;
+      content: '\e147';
+		}
+		&.active::after {
+      content: '\e644';
+		}
+		dt {
+			font-weight: bold;
+			cursor: pointer;
+		}
+		dd {
+      margin: 0.25em 0 0;
+		}
+	}
+	@include mb {
+		dl {
+			padding: 1rem 1.5rem;
+			&:not(:first-of-type) {
+				margin: 2rem 0 0;
+			}
+			&::before, &::after {
+				top: 1rem;
+				font-size: 1.8rem;
+			}
+			&::before {
+				left: 4rem;
+			}
+			&::after {
+				left: 1.6rem;
+			}
+			dt {
+				padding: 2.8rem 0 0;
+				font-size: 1.8rem;
+			}
+		}
+	}//mb
 	@include pc {
+		dl {
+			padding: 2rem 3rem;
+			&:not(:first-of-type) {
+				margin: 3rem 0 0;
+			}
+			&::before, &::after {
+				top: 2rem;
+				font-size: 2.2rem;
+			}
+			&::before {
+				left: 3rem;
+			}
+			&::after {
+				right: 3rem;
+			}
+			dt {
+				padding: 0 3rem 0 4.5rem;
+				font-size: 2.2rem;
+			}
+			dd {
+				padding: 0 0 0 4.5rem;
+			}
+		}
 	}//pc
 }
-
-
 
 // お問い合わせ ----------------------------------------
 
@@ -810,7 +1114,6 @@ header {
 	@include pc {
 	}//pc
 }
-
 
 // フッター ----------------------------------------
 

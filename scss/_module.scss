@@ -114,9 +114,7 @@
 
 h3 {
 	text-align: center;
-  margin: 0 0 1rem;
   font-weight: bold;
-	font-size: 2rem;
   span {
     display: inline-block;
     position: relative;
@@ -133,6 +131,8 @@ h3 {
     }
   }
 	@include mb {
+		margin: 0 0 1rem;
+		font-size: 2rem;
 	  line-height: 1.4;
 		span::after {
 			bottom: 0.6em;
@@ -141,6 +141,18 @@ h3 {
 	@include pc {
 	  margin: 0 0 3rem;
 		font-size: 3.6rem;
+	}
+}
+
+section {
+	h3:not(:first-of-type) {
+		@include mb {
+			margin: 3rem 0 1rem;
+		}
+		@include pc {
+			margin: 10rem 0 3rem;
+			font-size: 3.6rem;
+		}
 	}
 }
 
