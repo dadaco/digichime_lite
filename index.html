@@ -26,15 +26,28 @@
 <meta name="twitter:site" content="@WDigichime">
 <meta name="robots" content="max-image-preview:large">	
 	
-<!--ファビコン-->
+<!-- ファビコン -->
 <link rel="shortcut icon" href="img/favicon.ico" />
 	
-<!--ウェブクリップアイコン-->
+<!-- ウェブクリップアイコン -->
 <link rel="apple-touch-icon" href="img/favicon.ico" />
 	
-<link rel="stylesheet" href="css/style.css">
+<link href="css/style.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone" rel="stylesheet">
 <script src="js/script.js"></script>
+	
+<!-- sroll-hint -->
+<link href="css/scroll-hint.css" rel="stylesheet">
+<script src="js/scroll-hint.min.js" ></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  new ScrollHint('.js-scrollable', {
+		i18n: {
+			scrollable: 'スクロールします'
+		}
+	});
+});
+</script>
 </head>
 
 <body>
@@ -67,7 +80,7 @@
 				<div class="balloon">
 					<p><span class="lag">えっ、</span><span class="sml">スマホで呼び出し<br>出来るんですか！？</span></p>
 				</div>
-				<div class="tit">
+				<div class="tit fadeIn">
           <p class="lead"><span>飲食店の見えない課題を解決</span></p>
 					<h2>
 						ストレスフリー<small>な</small><br>
@@ -80,7 +93,7 @@
 		
 		<section id="trouble">
 			<div class="wrap">
-				<h3><span>お客様は困っています。</span></h3>
+				<h3><span class="fadein">お客様は困っています。</span></h3>
 				<div class="balloon">
 					<dl>
 						<dt>店員さんを呼んでも気づいてもらえない。</dt>
@@ -107,42 +120,43 @@
 		
 		<section id="solve">
 			<div class="wrap">
-				<h3><span>そのお悩み、<br class="pc_n">デジちゃいむLiteが解決します！</span></h3>
+				<h3><span class="fadein">そのお悩み、<br class="pc_n">デジちゃいむLiteが<br class="pc_n">解決します！</span></h3>
 				<h4>デジちゃいむLiteなら二次元コードを設置するだけでOK！</h4>
 				<p>お客様は専用アプリのダウンロード等の手間もなく、<br class="sp_n">お手持ちのスマートフォンで二次元コードを読み込むだけで簡単にスタッフを呼び出せます。</p>
-				<div id="movie">
-					<iframe width="890" height="498" src="https://www.youtube.com/embed/ku06e_U1t_k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<div class="pc_wrap">
+					<div id="movie">
+						<iframe width="890" height="498" src="https://www.youtube.com/embed/ku06e_U1t_k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</div>
 				</div>
 			</div>
 		</section>
 		
 		<section id="point">
 			<div class="wrap">
-				<h3><span>デジちゃいむLiteが選ばれる<br class="pc_n">3つのポイント</span></h3>
+				<h3><span class="fadein">デジちゃいむLiteが選ばれる<br class="pc_n">3つのポイント</span></h3>
 				<div class="detail">
-					<dl>
+					<dl class="fadein">
 						<dt><span class="point1">導入が簡単！</span></dt>
 						<dd>必要なのは登録・管理用のパソコンやタブレットだけ！<br>
 						専用機器や工事等は一切不要です。</dd>
 					</dl>
-					<dl>
+					<dl class="fadein">
 						<dt><span class="point2">わかりやすい管理画面！</span></dt>
 						<dd>直観的に操作ができるので初めての方やアルバイトのオペレーションにもすぐに定着します！</dd>
 					</dl>
-					<dl>
+					<dl class="fadein">
 						<dt><span class="point3">低コストで導入可能！</span></dt>
 						<dd>パソコンやタブレットがあれば初期費用は0円！月額2,980円で、呼び出しポイント用の二次元コードは何枚印刷しても金額は変わりません。</dd>
 					</dl>
 				</div>
 
-				<h3><span>その他サービスとの比較</span></h3>
-				<div class="compare">
+				<h3><span class="fadein">その他サービスとの比較</span></h3>
+				<div class="compare js-scrollable">
 					<table>
 						<thead>
 							<tr>
 								<th></th>
-								<th>
-									<img src="img/logo_w.svg" alt="デジちゃいむLite" width="170"></th>
+								<th><img src="img/logo_w.svg" alt="デジちゃいむLite" width="170"></th>
 								<th>卓上呼び出し<br class="pc_n">ボタン<br>（15席）</th>
 								<th>セルフオーダー<br>システム</th>
 							</tr>
@@ -151,7 +165,7 @@
 							<tr>
 								<th>初期費用</th>
 								<td>0円</td>
-								<td>700,000円</td>
+								<td>250,000円</td>
 								<td>30,000円</td>
 							</tr>
 							<tr>
@@ -176,13 +190,13 @@
 								<th>故障リスク</th>
 								<td>低</td>
 								<td>高</td>
-								<td>中</td>
+								<td>低</td>
 							</tr>
 							<tr>
 								<th>感染症対策</th>
 								<td>〇</td>
 								<td>×</td>
-								<td>△</td>
+								<td>〇</td>
 							</tr>
 						</tbody>
 					</table>		
@@ -199,25 +213,25 @@
 		
 		<section id="support">
       <div class="wrap">
-				<h3><span>デジちゃいむLiteが<br class="pc_n">あなたのお店をサポートします！</span></h3>
+				<h3><span class="fadein">デジちゃいむLiteが<br class="pc_n">あなたのお店を<br class="pc_n">サポートします！</span></h3>
 				<div class="detail">
 					<dl>
-						<dt>機会損失を防ぎ、客単価アップ！</dt>
+						<dt class="fadein">機会損失を防ぎ、客単価アップ！</dt>
 						<dd>お客様はいつでも気軽に呼び出しいただけます！<br>
 						操作は簡単！スマホで二次元コードを読み込むだけ！<br>
 						大きな声を出すことをなく、スタッフが近くにいなくても呼び出しすることができます！</dd>
 					</dl>
 					<dl>
-						<dt>顧客満足度アップ！</dt>
+						<dt class="fadein">顧客満足度アップ！</dt>
 						<dd>使い慣れた自分のスマホ使ってストレスフリーな呼び出しを行ってもらうことで<br>顧客満足度のアップそしてリピーターを増やすことができます！</dd>
 					</dl>
 					<dl>
-						<dt>リピーターの獲得により売上アップ！</dt>
+						<dt class="fadein">リピーターの獲得により売上アップ！</dt>
 						<dd>何度も来店してくれるリピーターのお客様を獲得できることで<br>安定した売り上げの獲得を実現（サポート）します！</dd>
 					</dl>
 				</div>
 
-				<h3 id="example"><span>導入事例</span></h3>
+				<h3 id="example"><span class="fadein">導入事例</span></h3>
 				<div class="example">
 					<div class="box">
 						<figure>
@@ -232,7 +246,7 @@
 					</div>
 				</div>
 
-				<h3 id="step"><span>導入は簡単3ステップ</span></h3>
+				<h3 id="step"><span class="fadein">導入は簡単3ステップ</span></h3>
 				<div class="step">
 					<dl>
 						<dt><span class="step1">STEP 1</span>無料トライアルに登録</dt>
@@ -260,7 +274,7 @@
 		
 		<section id="faq">
 			<div class="wrap">
-				<h3><span>よくある質問</span></h3>
+				<h3><span class="fadein">よくある質問</span></h3>
 				<dl>
 					<dt>推奨する通信環境は？</dt>
 					<dd>携帯回線でもWi-Fiでもご利用可能です。</dd>
@@ -285,7 +299,7 @@
 		
 		<section id="contact">
 			<div class="wrap">
-				<h3><span>お問い合わせ</span></h3>
+				<h3><span class="fadein">お問い合わせ</span></h3>
 				<div class="jump_btn">
 					<ul>
 						<li><a href="https://lite.digichime.app/admin" class="login"><span>お問い合わせはこちら</span></a></li>

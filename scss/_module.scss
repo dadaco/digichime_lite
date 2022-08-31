@@ -65,7 +65,6 @@
   }
 }
 
-
 // PC・SP　表示・非表示 ----------------------------------------
 
 .sp_n {
@@ -80,11 +79,10 @@
   }
 }
 
-
 // マージン・パディング回り ----------------------------------------
 
 .mt40 {
-  margin-top: 4.0rem !important;
+  margin-top: 4.0rem ;
 }
 .mt30 {
   margin-top: 3.0rem;
@@ -98,7 +96,7 @@
 
 .main {
   > section {
-    padding: 3rem 1rem;
+    padding: 3rem 1.6rem;
   }
 }
 @include pc {
@@ -109,6 +107,16 @@
   }
 }
 
+// animation ----------------------------------------
+
+@keyframes fade {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
 
 // タイトル回り ----------------------------------------
 
@@ -129,6 +137,15 @@ h3 {
       background-color: $clr_yellow;
       border-radius: 0.3em;
     }
+		&.fadein::after {
+			opacity : 0;
+			transform : translate(0, 25px);
+			transition : all 500ms;
+    }
+		&.fadein.scrollin::after {
+			opacity : 1;
+			transform : translate(0, 0);
+		}		
   }
 	@include mb {
 		margin: 0 0 1rem;

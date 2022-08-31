@@ -8,7 +8,7 @@ $wrap: 1286px; // PCサイト幅
 
 $base_font: YuGothic,yu gothic,hiragino sans,ヒラギノ角ゴシック,メイリオ,Meiryo,ＭＳ Ｐゴシック,ms pgothic,sans-serif;
 
-$clr_txt: #444;
+$clr_txt: #333;
 
 $clr_orange:#f6a831;
 
@@ -36,6 +36,12 @@ $set-prefix: -webkit- , "";
 
 @mixin pc { // PCブレイクポイント
   @media screen and (min-width: ($wPC)), print {
+    @content;
+  }
+}
+
+@mixin pc-sub { // PC調整用ブレイクポイント
+  @media screen and (max-width: ($wrap)), print {
     @content;
   }
 }

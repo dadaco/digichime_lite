@@ -38,13 +38,13 @@ main {
 
   body {
 		background-size: 800px 800px;
-    min-width: calc(#{$wrap} + 40px);
     font-size: 1.6rem;
     line-height: 1.8;
   }
 
   a, button {
     transition: .2s;
+    text-decoration: none;
     &:hover {
       opacity: .7;
     }
@@ -52,14 +52,11 @@ main {
 
   .wrap {
     @include wrap;
+		max-width: 100%;
     margin: auto;
-  }
-
-  main {
-    a:not([class*="btn"]):hover {
-      opacity: 1.0;
-      text-decoration: none;
-    }
+		@include pc-sub {
+			padding: 0 1.6rem;
+		}
   }
 }
 
@@ -77,7 +74,7 @@ header {
   }
   @include mb {
 		.wrap {
-			padding: 1rem;
+			padding: 1rem 1.6rem;
 			h1 {
 				img {
 					width: 200px;
@@ -86,7 +83,7 @@ header {
 			.nav_btn {
 				position: fixed;
 				top: 1rem;
-				right: 1rem;
+				right: 1.6rem;
 				width: 28px;
 				height: 24px;
 				z-index: 10;
@@ -142,19 +139,26 @@ header {
 					right: 0;
 				}
 				ul {
-					li {
-						a {
-							display: block;
-							border-bottom: 1px solid $clr_gray;
-              padding: 1rem;
-						}
-					}
 					&.menu {
-					}
-					&.sub {
 						li {
 							a {
+								display: block;
+								border-bottom: 1px solid $clr_gray;
+								padding: 1.2rem;
+							}
+						}
+					}
+					&.sub {
+						padding: 1rem 0 0;
+						li {
+							margin: 1.2rem 1.2rem 0;
+							a {
+								display: block;
+								border: 2px solid $clr_orange;
+								border-radius: 2em;
+								padding: 1rem;
 								font-weight: bold;
+								text-align: center;
 								&.signup {
 									background: $clr_orange;
 									color: #fff;
@@ -184,7 +188,7 @@ header {
 				}
 			}
 			nav {
-				width: 1020px;
+				width: calc(100% - 26.6rem);
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
@@ -192,13 +196,28 @@ header {
 					height: 60px;
 					display: flex;
 					align-items: center;
-					align-item: center;
 					&.menu {
+						width: calc(100% - 31rem);
+						overflow-x: auto;
+						&::-webkit-scrollbar {
+              width: 10px;
+							height: 10px;
+						}
+						&::-webkit-scrollbar-track {
+              background-color: transparent;
+              border-radius: 100px;
+						}
+						&::-webkit-scrollbar-thumb {
+              background-color: #eee;
+              border-radius: 100px;
+						}				
 						li {
 							margin: 0 15px 0 0;
+							white-space: nowrap;
 						}
 					}
 					&.sub {
+						width: 29rem;
 						li {
 							margin: 0 0 0 10px;
 							a {
@@ -260,7 +279,10 @@ header {
   @include mb {
 		li {
 			&:not(:first-of-type) {
-				margin: 1rem 0 0;
+				margin: 1.5rem 0 0;
+			}
+			a {
+				padding: 1rem;
 			}
 		}
 	}//mb
@@ -310,6 +332,8 @@ header {
 			.lead {
 				margin: 0;
 				font-weight: bold;
+				opacity: 0;
+				animation: fade .8s ease-in-out 0.1s 1 normal forwards;
 				span {
 					display: inline-block;
 					position: relative;
@@ -325,8 +349,14 @@ header {
 					}
 				}
 			}
+			h2 {
+				opacity: 0;
+        animation: fade .8s ease-in-out .8s 1 normal forwards;
+			}
 			.movie {
 				margin: 1.3em 0 0;
+				opacity: 0;
+        animation: fade .8s ease-in-out 1.6s 1 normal forwards;
 				a {
 					padding: 0.5em 1em;
 					font-weight: bold;
@@ -350,7 +380,7 @@ header {
 		}
 	}
   @include mb {
-    padding: 6rem 1rem 4rem;
+    padding: 6rem 1.6rem 4rem;
 		.wrap {
 			.balloon {
 				p {
@@ -389,11 +419,12 @@ header {
 						font-size: 2.2rem;
 					}
 				}
-			}
-      .movie {
-				a {
-					display: block;
-					text-align: center;
+				.movie {
+					a {
+						padding: 1rem;
+						display: block;
+						text-align: center;
+					}
 				}
 			}
 		}
@@ -405,11 +436,15 @@ header {
 			justify-content: space-between;
 			align-items: center;
       line-height: 1.4;
+      background: url("../img/keyvisual_pic01.png") no-repeat right top;
+			@include pc-sub {
+	      background-position: right 1.6rem top;
+			}
 			.balloon {
 				order: 2;
-				width: 67rem;
+				width: calc(100% - 52rem);
+				max-width: 67rem;
 				padding-top: 13rem;
-				background: url("../img/keyvisual_pic01.png") no-repeat right top;
 				p {
 					width: 25.4rem;
 					height: 25.4rem;
@@ -436,6 +471,7 @@ header {
 				}
 			}
 			.tit {
+				width: 52rem;
 				order: 1;
 				.lead {
 					font-size: 3.6rem;
@@ -460,7 +496,6 @@ header {
 // お客様は困っています。 ----------------------------------------
 
 #trouble {
-	padding: 3rem 1rem 0;
 	background: $clr_gray;
 	.balloon {
 		dl {
@@ -500,6 +535,7 @@ header {
 		}
 	}
 	@include mb {
+		padding: 3rem 1.6rem 0;
 		.balloon {
 			padding: 17rem 0 0;
 			background: url("../img/trouble_pic01.png") no-repeat center top / 35% auto;
@@ -518,8 +554,8 @@ header {
 			}
 		}
 		.down {
-			margin: 2rem -1rem 0;
-			padding: 2rem 1rem;
+			margin: 2rem -1.6rem 0;
+			padding: 2rem 1.6rem;
 			p {
 				&.lead {
 					line-height: 1.4;
@@ -537,8 +573,8 @@ header {
 	@include pc {
 		padding: 10rem 0 0;
 		.balloon {
-			padding: 0 0 0 32rem;
-			background: url("../img/trouble_pic01.png") no-repeat left bottom / contain;
+			padding: 0 0 0 26%;
+			background: url("../img/trouble_pic01.png") no-repeat left bottom / auto 44rem;
 			dl {
 				padding: 3rem 4rem;
 				display: inline-block;
@@ -595,6 +631,16 @@ header {
 		font-weight: bold;
 	}
 	#movie {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    iframe {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+    }
 	}
 	@include mb {
 		&::before {
@@ -606,16 +652,6 @@ header {
 		}
 		#movie {
 			margin: 1rem auto 0;
-			position: relative;
-			width: 100%;
-			padding-top: 56.25%;
-			iframe {
-				position: absolute;
-				top: 0;
-				right: 0;
-				width: 100%;
-				height: 100%;
-			}
 		}
 	}//mb
 	@include pc {
@@ -627,9 +663,11 @@ header {
 		h4 {
 			font-size: 2.2rem;
 		}
-		#movie {
+    .pc_wrap {
 			margin: 2rem auto 0;
-		}
+      width: 89rem;
+      max-width: 100%;
+    }
 	}//pc
 }
 
@@ -638,7 +676,9 @@ header {
 #point {
 	background: $clr_lightyellow;
 	.detail {
+		overflow: hidden;
 		dl {
+			counter-increment: num 1;
 			background: #fff;
 			border-radius: 1rem;
 			position: relative;
@@ -653,16 +693,17 @@ header {
 				line-height: 1;
 				letter-spacing: 0.03em;
 				color: $clr_lightyellow;
+        content: "0" counter(num);
 			}
-			&:nth-of-type(1)::after {
-        content: '01';
+			&.fadein::after {
+				opacity : 0;
+				transform : translate(50px, 0);
+				transition : all 500ms;
 			}
-			&:nth-of-type(2)::after {
-        content: '02';
-			}
-			&:nth-of-type(3)::after {
-        content: '03';
-			}
+			&.fadein.scrollin::after {
+				opacity : 1;
+				transform : translate(0, 0);
+			}		
 			dt {
 				font-weight: bold;
 				text-align: center;
@@ -798,7 +839,7 @@ header {
 			justify-content: space-between;
 			dl {
 				box-sizing: border-box;
-				width: 40rem;
+				width: calc(33.333333% - 2.8rem);
 				padding: 2rem 4rem 3rem;
 				&::after {
 					font-size: 13em;
@@ -811,6 +852,7 @@ header {
 		.compare {
 			margin: 0 auto 5rem;
       width: 890px;
+			max-width: 100%;
 			table {
 				table-layout: fixed;
 			}
@@ -839,6 +881,13 @@ header {
 					background: url("../img/icon_point.png") no-repeat;
 					background-size: contain;
 				}
+				&.fadein::after {
+					opacity : 0;
+					transition : all 500ms;
+				}
+				&.fadein.scrollin::after {
+					opacity : 1;
+				}		
 			}
 		}
 	}
@@ -974,8 +1023,13 @@ header {
 	@include pc {
 		.detail {
 			background-position: right 5rem bottom;
-			background-size: contain;
+			background-size: auto 40rem;
+			@include pc-sub {
+				background-position: right bottom;
+				background-size: auto 30rem;
+			}
 			dl {
+				text-shadow: #fff 2px 0px, #fff -2px 0px, #fff 0px -2px, #fff 0px 2px, #fff 2px 2px , #fff -2px 2px, #fff 2px -2px, #fff -2px -2px, #fff 1px 2px,  #fff -1px 2px, #fff 1px -2px, #fff -1px -2px, #fff 2px 1px,  #fff -2px 1px, #fff 2px -1px, #fff -2px -1px;
 				&:not(:first-of-type) {
 					margin: 3rem 0 0;
 				}
@@ -989,6 +1043,12 @@ header {
 				padding: 3rem 5rem;
 				display: flex;
 				justify-content: center;
+				figure {
+					img {
+						width: 20rem;
+						max-width: 20rem;
+					}
+				}
 				dl {
 					margin: -0.5em 0 0 5rem;
 					dt {
@@ -1002,7 +1062,7 @@ header {
 			display: flex;
 			justify-content: space-between;
       dl {
-				width: 40rem;
+				width: calc(33.333333% - 2.8rem);
 				padding: 3rem 4rem;
 				&:not(:last-of-type) {
 					&::after {
@@ -1120,13 +1180,24 @@ header {
 footer {
 	text-align: center;
 	nav {
-		padding: 1.5rem 0;
 		background: $clr_lightyellow;
 	}
 	.copy {
 		margin: 0;
 		padding: 1.5rem 0;
 	}
+	@include mb {
+		nav {
+			padding: 2rem 0;
+			ul {
+				li {
+					&:not(:first-of-type) {
+						margin: 1.5rem 0 0;
+					}
+				}
+			}
+		}
+	}//mb
 	@include pc {
 		nav {
 			padding: 3rem 0;
@@ -1143,20 +1214,3 @@ footer {
 		}
 	}//pc
 }//footer
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
